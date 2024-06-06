@@ -2,12 +2,9 @@ name: First Workflow
 
 on: push
 
-env:
-  TEST: "test"
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Print TEST
-        run: echo "TEST =  $TEST"
+        run: echo "TEST =  ${{ vars.TEST }}"
