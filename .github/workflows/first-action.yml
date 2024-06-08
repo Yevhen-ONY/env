@@ -8,6 +8,7 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: TEST
     steps:
       - name: Print Variable 
         run: echo "TEST =  ${{ vars.TEST1 }}"
@@ -16,3 +17,6 @@ jobs:
         env:
           MY_SECRET: "${{ secrets.MY_SECRET }}"
         run: echo "MY_SECRET = $MY_SECRET"
+
+      - name: Print Env specific Variable
+        run: echo "MY_TEST_VAR = ${{ vars.MY_TEST_VAR }}"
