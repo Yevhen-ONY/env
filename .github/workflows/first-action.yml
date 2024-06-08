@@ -13,4 +13,6 @@ jobs:
         run: echo "TEST =  ${{ vars.TEST1 }}"
       
       - name: Print Secret
-        run: echo "MY_SECRET = ${{ secrets.MY_SECRET }}"
+        env:
+          MY_SECRET: "${{ secrets.MY_SECRET }}"
+        run: echo "MY_SECRET = $MY_SECRET"
