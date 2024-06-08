@@ -9,5 +9,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Print TEST
+      - name: Print Variable 
         run: echo "TEST =  ${{ vars.TEST1 }}"
+      
+      - name: Print Secret
+        run: echo "MY_SECRET = ${{ secrets.MY_SECRET }}"
