@@ -6,9 +6,8 @@ env:
   TEST1: "hello from workflow"
 
 jobs:
-  test:
+  gen:
     runs-on: ubuntu-latest
-    environment: TEST
     steps:
       - name: Print Variable 
         run: echo "TEST =  ${{ vars.TEST1 }}"
@@ -17,6 +16,20 @@ jobs:
         env:
           MY_SECRET: "${{ secrets.MY_SECRET }}"
         run: echo "MY_SECRET = $MY_SECRET"
-
+  test: 
+    runs-on: ubuntu-latest
+    environment: TEST
+    steps:
       - name: Print Env specific Variable
-        run: echo "MY_TEST_VAR = ${{ vars.MY_TEST_VAR }}"
+        env:
+          VAR: ${{ vars.MY_ENV_VAR }}
+        run: echo "MY_ENV_VAR = $VAR"
+  
+  prod: 
+    runs-on: ubuntu-latest
+    environment: PROD 
+    steps:
+      - name: Print Env specific Variable
+        env:
+          VAR: ${{ vars.MY_ENV_VAR }}
+        run: echo "MY_ENV_VAR = $VAR"
